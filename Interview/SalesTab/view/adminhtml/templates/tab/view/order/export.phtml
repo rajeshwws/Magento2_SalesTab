@@ -1,0 +1,66 @@
+<div class="fieldset-wrapper order-information">
+    <div class="fieldset-wrapper-title">
+        <span class="title"><?php echo __('Send Order') ?></span>
+    </div><br/>
+    <div class="admin__field field">
+        <button id="order_load" title="<?php echo __('Load')?>" type="button" class="action-default scalable edit primary" onClick="LoadOrder();" >
+            <span><?php echo __('Load')?></span>
+        </button>
+    </div>
+    <div class="admin__field field field" id="order-info" style="display:none;">
+        <div class="admin__field-control control">
+            <textarea name="oder_data" id="oder_data" class="textarea" rows="10" cols="30"></textarea>
+        </div>
+        <button id="order_send" title="<?php echo __('Send')?>" type="button" class="action-default scalable edit primary" onClick="SendOrderToLog();">
+            <span><?php echo __('Send')?></span>
+        </button>
+    </div>
+</div>
+<script type="text/javascript">
+    function LoadOrder(){
+        require(["jquery"],function($) {
+            $(document).ready(function() {
+                var ajaxUrl = "<?php echo $block->getUrl('exportorder/index/load')?>";
+                $.ajax({
+                    url: ajaxUrl,
+                    showLoader: true,
+                    type: 'POST',
+                    dataType: 'json',
+                    data: {
+                        order_id: "<?php echo $this->getOrderId();?>"
+                    },
+                    complete: function(res) {
+                        var orderData  = JSON.parse(res.responseText);
+                        var orderDataPretty = JSON.stringify(orderData, null, '\t');
+                        $('#oder_data').val(orderDataPretty);    
+                        $('#order-info').show();
+                        console.log(res.responseText);   
+                    },
+                    error: function (xhr, status, errorThrown) {
+                        console.log('Error happens. Try again.');
+                    }
+                });
+            });
+        });
+    }
+    function SendOrderToLog(){
+        require(["jquery"],function($) {
+            $(document).ready(function() {
+                var ajaxUrl = "<?php echo $block->getUrl('exportorder/index/send')?>";
+                $.ajax({
+                    url: ajaxUrl,
+                    showLoader: true,
+                    type: 'POST',
+                    dataType: 'json',
+                    data: jQuery.parseJSON($('#oder_data').val()),
+                    complete: function(res) {
+                           
+                    },
+                    error: function (xhr, status, errorThrown) {
+                        console.log('Error happens. Try again.');
+                    }
+                });
+            });
+        });
+    }
+</script>
