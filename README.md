@@ -17,11 +17,11 @@ Example: currency_code from AED to USD
 
 ## Case 2) API Customization
 
-GET requests to http://magento2.local/rest/V1/order/details/57
+GET requests to http://magento.local/rest/V1/order/details/57
 should list details of the order.
 ![Alt text](https://github.com/rajeshwws/Magento2_SalesTab/blob/master/postapi.jpg)
 Case 2.2)
-POST http://magento2.local/rest/V1/order/update
+POST http://magento.local/rest/V1/order/update
 
 ![Alt text](https://github.com/rajeshwws/Magento2_SalesTab/blob/master/getapi.jpg)
 
