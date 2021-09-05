@@ -19,10 +19,12 @@ Example: currency_code from AED to USD
 
 GET requests to http://magento.local/rest/V1/order/details/57
 should list details of the order.
-![Alt text](https://github.com/rajeshwws/Magento2_SalesTab/blob/master/postapi.jpg)
+![Alt text](https://github.com/rajeshwws/Magento2_SalesTab/blob/master/getapi.jpg)
+
 Case 2.2)
 POST http://magento.local/rest/V1/order/update
+![Alt text](https://github.com/rajeshwws/Magento2_SalesTab/blob/master/postapi.jpg)
 
-![Alt text](https://github.com/rajeshwws/Magento2_SalesTab/blob/master/getapi.jpg)
+OrderExport.log asynchronously using RabbitMQ broker.
 
 ![Alt text](https://github.com/rajeshwws/Magento2_SalesTab/blob/master/rabbitmq.jpg)
